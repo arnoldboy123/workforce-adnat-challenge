@@ -1,3 +1,24 @@
 <h1><%= link_to "Adnat", root_path %></h1>
 
 <p>Logged in as <%= current_user.name %></p> <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+
+<% if current_user.organisation_id.nil? %>
+  <p>You aren't a member of any organisations. Join an existing one or create a new one.</p>
+  <h2>Organisations</h2>
+  <ul>
+    <% @organisations.each do |org| %>
+      <li><%= org.name %> <%= link_to "Edit", edit_organisation_path(org) %> <%= link_to "Join", join_organisation_path(org) %></li>
+    <% end %>
+  </ul>
+
+  <h2>Create Organisation</h2>
+  <%= form_for(@organisation) do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :hourly_rate %>
+    <%= f.number_field :hourly_rate %>
+    <%= f.submit %>
+  <% end %>
+<% else %>
+  <h2><%= @organisation.name %></h2>
+<% end %>

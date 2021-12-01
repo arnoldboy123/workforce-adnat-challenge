@@ -1,0 +1,8 @@
+<h1>Update Organisation</h1>
+<%= form_for(@organisation) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :hourly_rate %>
+  <%= f.number_field :hourly_rate %>
+  <%= f.submit %>
+<% end %>
