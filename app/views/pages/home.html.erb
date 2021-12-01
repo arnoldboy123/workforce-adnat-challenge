@@ -1,7 +1,3 @@
-<h1><%= link_to "Adnat", root_path %></h1>
-
-<p>Logged in as <%= current_user.name %></p> <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-
 <% if current_user.organisation_id.nil? %>
   <p>You aren't a member of any organisations. Join an existing one or create a new one.</p>
   <h2>Organisations</h2>
@@ -21,4 +17,6 @@
   <% end %>
 <% else %>
   <h2><%= @organisation.name %></h2>
+  <%= link_to "Edit", edit_organisation_path(@organisation) %>
+  <%= link_to "Leave", leave_organisation_path(@organisation) %>
 <% end %>

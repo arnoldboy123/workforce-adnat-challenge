@@ -29,6 +29,11 @@ class OrganisationsController < ApplicationController
     redirect_to root_path
   end
 
+  def leave
+    current_user.update(organisation_id: nil)
+    redirect_to root_path
+  end
+
   private
 
   def org_params
