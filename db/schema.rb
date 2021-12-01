@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2021_12_01_211109) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name"
-    t.integer "organisation_id", null: false
+    t.integer "organisation_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -45,5 +45,4 @@ ActiveRecord::Schema.define(version: 2021_12_01_211109) do
   end
 
   add_foreign_key "shifts", "users"
-  add_foreign_key "users", "organisations"
 end
