@@ -9,6 +9,7 @@ You will need to ensure rails is installed in your local machine and you might n
 
 ## Features
 [Video Demo](https://youtu.be/H666GptQsKA)
+
 The user can use this app to:
 - Sign up and Sign in
 - Edit their user details
