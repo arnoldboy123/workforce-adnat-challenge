@@ -8,15 +8,19 @@ To run this app, use `git clone <SSH key>` to download the codes. Then, you can 
 You will need to ensure rails is installed in your local machine and you might need to run `bundle install` to ensure everything can run smoothly
 
 ## Features
-The feature of this app includes:
+The user can use this app to:
 - Sign up and Sign in
-- Edit your user details
-- Create an organisation or join an organisation if user is not in an organisation
-- View the shift table of the organisation
+- Edit their user details
+- Create an organisation or join an organisation if they are not in an organisation
+- View the shift table of the organisation they are in
 - Create shifts for themselves
-- Update and delete their own shift
+- Update and delete their shifts
 - Leave their organisation (shifts will be permanently destroyed when user leaves)
 - The app will flag whether a shift is overnight
+
+## Optional challenges implemented
+- Edit user details
+- Modify and delete shifts
 
 ## Details
 #### Additional gems used
