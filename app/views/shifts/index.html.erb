@@ -9,18 +9,22 @@
     <th>Shift cost</th>
   </tr>
 
-  <% if @shifts %>
-    <tr>
-      <td>Employee name</td>
-      <td>Shift Date</td>
-      <td>Start Time</td>
-      <td>Finish Time</td>
-      <td>Break Length (minutes)</td>
-      <td>Hours worked</td>
-      <td>Shift cost</td>
-    </tr>
+  <% if @shifts.empty? %>
+  </table>
+
+  <%= link_to "Create new shift", new_organisation_shift_path(@org)%>
+  <% else %>
+    <% @shifts.all.each do |shift|%>
+      <tr>
+        <td><%= shift.user.name%> </td>
+        <td><%= shift.start.to_date %></td>
+        <td><%= shift.start.strftime("%H:%M") %></td>
+        <td><%= shift.finish.strftime("%H:%M") %></td>
+        <td><%= shift.break_length%></td>
+        <td><%= (shift.finish - shift.start)/3600 - shift.break_length/60.to_f %></td>
+        <td>$<%= ((shift.finish - shift.start)/3600 - shift.break_length/60.to_f) * @org.hourly_rate %></td>
+      </tr>
+    <% end%>
+  </table>
+  <%= link_to "Create new shift", new_organisation_shift_path(@org)%>
   <% end %>
-
-</table>
-
-<%= link_to "Create new shift", new_organisation_shift_path(@org)%>
