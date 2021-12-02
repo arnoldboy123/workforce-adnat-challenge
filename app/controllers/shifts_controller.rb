@@ -2,7 +2,12 @@ class ShiftsController < ApplicationController
   before_action :find_org
 
   def index
-    @shifts = current_user.shifts
+    @shifts = []
+    User.where(organisation_id: @org.id).each do |user|
+      user.shifts.each do |shift|
+        @shifts << shift
+      end
+    end
   end
 
   def new

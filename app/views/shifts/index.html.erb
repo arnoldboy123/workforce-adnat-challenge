@@ -14,15 +14,15 @@
 
   <%= link_to "Create new shift", new_organisation_shift_path(@org)%>
   <% else %>
-    <% @shifts.all.each do |shift|%>
+    <% @shifts.each do |shift|%>
       <tr>
         <td><%= shift.user.name%> </td>
         <td><%= shift.start.to_date %></td>
         <td><%= shift.start.strftime("%H:%M") %></td>
         <td><%= shift.finish.strftime("%H:%M") %></td>
         <td><%= shift.break_length%></td>
-        <td><%= (shift.finish - shift.start)/3600 - shift.break_length/60.to_f %></td>
-        <td>$<%= ((shift.finish - shift.start)/3600 - shift.break_length/60.to_f) * @org.hourly_rate %></td>
+        <td><%= ((shift.finish - shift.start)/3600 - shift.break_length/60.to_f).round(2) %></td>
+        <td>$<%= (((shift.finish - shift.start)/3600 - shift.break_length/60.to_f) * @org.hourly_rate).round(2) %></td>
       </tr>
     <% end%>
   </table>
