@@ -1,5 +1,6 @@
 class ShiftsController < ApplicationController
   before_action :find_org
+  before_action :find_shift, only: [:edit, :update, :destroy]
 
   def index
     @shifts = []
@@ -24,6 +25,18 @@ class ShiftsController < ApplicationController
     end
   end
 
+  def edit; end
+
+  def update
+    @shift.update(shift_params)
+    redirect_to organisation_shifts_path(@org)
+  end
+
+  def destroy
+    @shift.destroy
+    redirect_to organisation_shifts_path(@org)
+  end
+
   private
   def shift_params
     params.require(:shift).permit(:start, :finish, :break_length)
@@ -31,5 +44,9 @@ class ShiftsController < ApplicationController
 
   def find_org
     @org = Organisation.find_by_id(params["organisation_id"])
+  end
+
+  def find_shift
+    @shift = Shift.find_by_id(params[:id])
   end
 end

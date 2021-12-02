@@ -7,6 +7,8 @@
     <th>Break Length (minutes)</th>
     <th>Hours worked</th>
     <th>Shift cost</th>
+    <th>Modify shift</th>
+    <th>Delete shift</th>
   </tr>
 
   <% if @shifts.empty? %>
@@ -23,6 +25,20 @@
         <td><%= shift.break_length%></td>
         <td><%= ((shift.finish - shift.start)/3600 - shift.break_length/60.to_f).round(2) %></td>
         <td>$<%= (((shift.finish - shift.start)/3600 - shift.break_length/60.to_f) * @org.hourly_rate).round(2) %></td>
+        <td>
+        <% if shift.user == current_user %>
+          <%= link_to "edit", edit_organisation_shift_path(@org, shift)%>
+        <% else %>
+         NA
+        <% end %>
+        </td>
+        <td>
+        <% if shift.user == current_user %>
+          <%= link_to "Delete", organisation_shift_path(@org, shift), method: :delete%>
+        <% else %>
+         NA
+        <% end %>
+        </td>
       </tr>
     <% end%>
   </table>
