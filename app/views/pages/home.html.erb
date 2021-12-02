@@ -17,6 +17,7 @@
   <% end %>
 <% else %>
   <h2><%= @organisation.name %></h2>
+  <%= link_to "View Shifts", organisation_shifts_path(@organisation) %>
   <%= link_to "Edit", edit_organisation_path(@organisation) %>
   <%= link_to "Leave", leave_organisation_path(@organisation) %>
 <% end %>

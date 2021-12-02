@@ -1,0 +1,26 @@
+<table>
+  <tr>
+    <th>Employee name</th>
+    <th>Shift Date</th>
+    <th>Start Time</th>
+    <th>Finish Time</th>
+    <th>Break Length (minutes)</th>
+    <th>Hours worked</th>
+    <th>Shift cost</th>
+  </tr>
+
+  <% if @shifts %>
+    <tr>
+      <td>Employee name</td>
+      <td>Shift Date</td>
+      <td>Start Time</td>
+      <td>Finish Time</td>
+      <td>Break Length (minutes)</td>
+      <td>Hours worked</td>
+      <td>Shift cost</td>
+    </tr>
+  <% end %>
+
+</table>
+
+<%= link_to "Create new shift", new_organisation_shift_path(@org)%>
