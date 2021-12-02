@@ -8,6 +8,7 @@ To run this app, use `git clone <SSH key>` to download the codes. Then, you can 
 You will need to ensure rails is installed in your local machine and you might need to run `bundle install` to ensure everything can run smoothly
 
 ## Features
+[Video Demo](https://youtu.be/H666GptQsKA)
 The user can use this app to:
 - Sign up and Sign in
 - Edit their user details
@@ -21,14 +22,16 @@ The user can use this app to:
 ## Optional challenges implemented
 - Edit user details
 - Modify and delete shifts
+- Detect night shifts
 
-## Details
+## Specs
 #### Additional gems used
 - simple_form
 - devise
 #### Database
 - Sqlite3
 
-## Caveat
-- organisation_id in the user table is not a database reference since it is a 0 or 1 to many relationship, using `t.references :organisation, foreign_key: true` will create problems where organisation id is mandatory
-- There hasn't been any front-end styling due to the back-end focused nature of this challenge
+## Decisions taken
+#### Database
+- organisation_id in the user table is not a database reference since it is a 0 or 1 to many relationship, using `t.references :organisation, foreign_key: true` will create problems during user sign up.
+- Instead, organisation_id is currently of the integer datatype. In the organisations controller, some manual manipulation was done to link users to the correct organisation.
