@@ -12,37 +12,35 @@
     <th>Delete shift</th>
   </tr>
 
-  <% if @shifts.empty? %>
-  </table>
+  <% @shifts.each do |shift|%>
+    <tr>
+      <td><%= shift.user.name%> </td>
+      <td><%= shift.start.to_date %></td>
+      <td><%= shift.start.strftime("%H:%M") %></td>
+      <td><%= shift.finish.strftime("%H:%M") %></td>
+      <td><%= shift.break_length%></td>
+      <td><%= ((shift.finish - shift.start)/3600 - shift.break_length/60.to_f).round(2) %></td>
+      <td>$<%= (((shift.finish - shift.start)/3600 - shift.break_length/60.to_f) * @org.hourly_rate).round(2) %></td>
+      <td><%= shift.finish.to_s(:time).split(":").join.to_i < shift.start.to_s(:time).split(":").join.to_i %></td>
+      <td>
+      <%# Here I am restricting the option to edit only current user's shifts %>
+      <% if shift.user == current_user %>
+        <%= link_to "edit", edit_organisation_shift_path(@org, shift)%>
+      <% else %>
+        NA
+      <% end %>
+      </td>
+      <td>
+      <%# Here I am restricting the option to delete only current user's shifts %>
+      <% if shift.user == current_user %>
+        <%= link_to "Delete", organisation_shift_path(@org, shift), method: :delete%>
+      <% else %>
+      NA
+      <% end %>
+      </td>
+    </tr>
+  <% end%>
 
-  <%= link_to "Create new shift", new_organisation_shift_path(@org)%>
-  <% else %>
-    <% @shifts.each do |shift|%>
-        <tr>
-          <td><%= shift.user.name%> </td>
-          <td><%= shift.start.to_date %></td>
-          <td><%= shift.start.strftime("%H:%M") %></td>
-          <td><%= shift.finish.strftime("%H:%M") %></td>
-          <td><%= shift.break_length%></td>
-          <td><%= ((shift.finish - shift.start)/3600 - shift.break_length/60.to_f).round(2) %></td>
-          <td>$<%= (((shift.finish - shift.start)/3600 - shift.break_length/60.to_f) * @org.hourly_rate).round(2) %></td>
-          <td><%= shift.finish.to_s(:time).split(":").join.to_i < shift.start.to_s(:time).split(":").join.to_i %></td>
-          <td>
-          <% if shift.user == current_user %>
-            <%= link_to "edit", edit_organisation_shift_path(@org, shift)%>
-          <% else %>
-          NA
-          <% end %>
-          </td>
-          <td>
-          <% if shift.user == current_user %>
-            <%= link_to "Delete", organisation_shift_path(@org, shift), method: :delete%>
-          <% else %>
-          NA
-          <% end %>
-          </td>
-        </tr>
-    <% end%>
-  </table>
-  <%= link_to "Create new shift", new_organisation_shift_path(@org)%>
-  <% end %>
+</table>
+
+<%= link_to "Create new shift", new_organisation_shift_path(@org)%>

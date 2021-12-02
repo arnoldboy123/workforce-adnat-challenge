@@ -15,6 +15,7 @@
     <%= f.number_field :hourly_rate %>
     <%= f.submit %>
   <% end %>
+
 <% else %>
   <h2><%= @organisation.name %></h2>
   <%= link_to "View Shifts", organisation_shifts_path(@organisation) %>
