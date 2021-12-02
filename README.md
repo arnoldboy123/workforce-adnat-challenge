@@ -1,7 +1,7 @@
 # README
 
 ## Background
-This is a backend challenge for to build a simplified version of the Tanda web app as part of workforce.com's recruitment selection process. The focus of this challenge is on creating all the back end functions using `Ruby on Rails`.
+This is a [backend challenge](https://github.com/TandaHQ/work-samples/tree/master/adnat%20(backend)) for to build a simplified version of the Tanda web app as part of workforce.com's recruitment selection process. The focus of this challenge is on creating all the back end functions using `Ruby on Rails`.
 
 ## Instructions
 To run this app, use `git clone <SSH key>` to download the codes. Then, you can run the app via localhost by typing in `rails server` in your local terminal.
