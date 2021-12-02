@@ -3,6 +3,7 @@ class ShiftsController < ApplicationController
   before_action :find_shift, only: [:edit, :update, :destroy]
 
   def index
+    # Here I store shifts belong to all employee in the company in a @shift array
     @shifts = []
     User.where(organisation_id: @org.id).each do |user|
       user.shifts.each do |shift|
@@ -38,6 +39,7 @@ class ShiftsController < ApplicationController
   end
 
   private
+
   def shift_params
     params.require(:shift).permit(:start, :finish, :break_length)
   end
