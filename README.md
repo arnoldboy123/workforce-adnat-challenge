@@ -13,9 +13,10 @@ The feature of this app includes:
 - Create shifts for themselves
 - Update and delete their own shift
 - Leave their organisation
+- The app will flag whether a shift is overnight
 
 ## Details
-#### additional gems used
+#### Additional gems used
 - simple_form
 - devise
 #### Database
