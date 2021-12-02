@@ -14,7 +14,14 @@ The feature of this app includes:
 - Update and delete their own shift
 - Leave their organisation
 
+## Details
+#### additional gems used
+- simple_form
+- devise
+#### Database
+- Sqlite3
+
 ## Caveat
 - organisation_id in the user table is not a database reference since it is a 0 or 1 to many relationship, using `t.references :organisation, foreign_key: true` will create problems where organisation id is mandatory
-- When user leaves the organisation, existing shifts will still be there
+- When user leaves the organisation, their shift will not be visible anymore, however if they rejoin the organisation their past shift will be immediately visible
 - All users can delete all shifts in their organisation
