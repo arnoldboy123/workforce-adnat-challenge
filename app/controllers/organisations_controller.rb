@@ -31,6 +31,7 @@ class OrganisationsController < ApplicationController
 
   def leave
     current_user.update(organisation_id: nil)
+    current_user.shifts.destroy_all
     redirect_to root_path
   end
 

@@ -12,7 +12,7 @@ The feature of this app includes:
 - View the shift table of the organisation
 - Create shifts for themselves
 - Update and delete their own shift
-- Leave their organisation
+- Leave their organisation (shifts will be permanently destroyed when user leaves)
 - The app will flag whether a shift is overnight
 
 ## Details
@@ -24,5 +24,3 @@ The feature of this app includes:
 
 ## Caveat
 - organisation_id in the user table is not a database reference since it is a 0 or 1 to many relationship, using `t.references :organisation, foreign_key: true` will create problems where organisation id is mandatory
-- When user leaves the organisation, their shift will not be visible anymore, however if they rejoin the organisation their past shift will be immediately visible
-- All users can delete all shifts in their organisation
